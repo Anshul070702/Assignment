@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import EventDetailsModal from "./Components/Event";
+import CommentsSection from "./Components/Comments";
+import "./index.css";
 
-function App() {
+const App = () => {
+  const [event, setEvent] = useState({
+    title: "",
+    assignedTo: "",
+    status: "Incomplete",
+    isEditing: false, // Add isEditing state
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <EventDetailsModal event={event} setEvent={setEvent} />
+      <CommentsSection />
     </div>
   );
-}
+};
 
 export default App;
